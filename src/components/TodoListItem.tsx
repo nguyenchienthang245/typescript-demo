@@ -28,7 +28,7 @@
 
 import React from "react";
 import { useDispatch } from "react-redux";
-import { checkItem } from "../actions/todoActions";
+import { checkItem, deletItem } from "../actions/todoActions";
 interface Props {
   todo: Todo;
   // toggleTodo: ToggleTodo;
@@ -48,6 +48,13 @@ export const TodoListItem: React.FC<Props> = ({ todo }) => {
             dispatch(checkItem(todo));
           }}
         />
+        <button
+          onClick={() => {
+            dispatch(deletItem(todo));
+          }}
+        >
+          delete
+        </button>
         {' '}
         {todo.text}
       </label>

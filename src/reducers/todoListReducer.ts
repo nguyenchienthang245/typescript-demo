@@ -41,7 +41,15 @@ export const todoListReducer = (state: TodoList = initialState, action: Action) 
         todoList: newTodoList,
       };
     }
+    case "DELETE_TODO": {
+      const newTodoList = state.todoList.filter(todo => todo !== action.payload);
+      return {
+        ...state,
+        todoList: newTodoList,
+      };
+    }
     default:
       return state;
   }
 }
+
