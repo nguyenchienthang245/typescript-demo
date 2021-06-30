@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewTodo } from "../actions/todoActions";
+import Demo from "./Demo";
 import { TodoList } from "./TodoList";
 
 interface Props {
@@ -15,10 +16,16 @@ export const AddTodoForm: React.FC<Props> = () => {
   const dispatch = useDispatch();
 
   const addTodo = (text: string) => {
-    const newTodo: Todo = { text: text, complete: false };
-    const action = addNewTodo(newTodo);
-    dispatch(action);
-    console.log(text);
+    const found = todoList.find(element => element.text === text);
+    console.log(found);
+    if (found?.text === text || !text) {
+      alert("NO")
+    } else {
+      const newTodo: Todo = { text: text, complete: false };
+      const action = addNewTodo(newTodo);
+      dispatch(action);
+      console.log(text);
+    }
   };
 
   return (
@@ -44,6 +51,7 @@ export const AddTodoForm: React.FC<Props> = () => {
       </button>
       </form>
       <TodoList todoList={todoList} />
+      <Demo />
     </>
   );
 }
