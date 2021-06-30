@@ -48,6 +48,21 @@ export const todoListReducer = (state: TodoList = initialState, action: Action) 
         todoList: newTodoList,
       };
     }
+    case "EDIT_TODO": {
+      const newTodoList = state.todoList.map(todo => {
+        if (todo.text === action.payload.todo.text) {
+          return {
+            ...todo,
+            text: action.payload.text,
+          };
+        }
+        return todo;
+      });
+      return {
+        ...state,
+        todoList: newTodoList,
+      };
+    }
     default:
       return state;
   }

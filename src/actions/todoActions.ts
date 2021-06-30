@@ -5,10 +5,20 @@ export const addNewTodo = (todo: Todo) => {
   }
 }
 
-export const deletItem = (todo: Todo) => {
+export const deleteItem = (todo: Todo) => {
   return {
     type: "DELETE_TODO",
     payload: todo,
+  }
+}
+
+export const editItem = (todo: Todo, text: string) => {
+  return {
+    type: "EDIT_TODO",
+    payload: {
+      todo: todo,
+      text: text,
+    }
   }
 }
 

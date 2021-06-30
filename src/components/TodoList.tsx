@@ -10,7 +10,10 @@ export const TodoList: React.FC<Props> = ({ todoList }) => {
   return (
     <ul>
       {todoList.map((item, index) => (
-        <TodoListItem key={index} todo={item} />
+        <>
+          <TodoListItem key={index} todo={item} />
+          <div style={{ height: "50px" }}></div>
+        </>
       ))}
     </ul>
   );
